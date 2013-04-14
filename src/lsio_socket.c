@@ -19,3 +19,8 @@ void lsio_socket_init(lsio_socket_t *socket)
 	socket->transport = NULL;
 }
 
+int lsio_socket_handshake(lsio_socket_t *socket, const char *uri)
+{
+	return -1;
+}
+

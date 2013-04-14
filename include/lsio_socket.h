@@ -30,6 +30,7 @@ typedef struct lsio_socket_s {
 } lsio_socket_t;
 
 void lsio_socket_init(lsio_socket_t *);
+int lsio_socket_handshake(lsio_socket_t *, const char *uri);
 
 #ifdef __cplusplus
 }

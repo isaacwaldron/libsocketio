@@ -4,7 +4,7 @@
 CC=gcc
 
 OBJDIR=obj
-OBJS=lsio_socket.o
+OBJS=lsio_socket.o lsio_transport.o
 
 LIBDIR=lib
 LIBVER_MAJOR=1
@@ -27,8 +27,8 @@ DIRS=$(BINDIR) $(LIBDIR) $(OBJDIR)
 $(LIBDIR)/$(LIBNAME): $(LIBDIR)/$(LIBNAME_FULL)
 	-ln -s $(LIBNAME_FULL) $@
 
-$(LIBDIR)/$(LIBNAME_FULL): $(OBJDIR)/$(OBJS)
-	$(CC) -shared -o $@ $<
+$(LIBDIR)/$(LIBNAME_FULL): $(addprefix $(OBJDIR)/, $(OBJS))
+	$(CC) -shared -o $@ $^
 	
 dirs:
 	-mkdir $(DIRS)

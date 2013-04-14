@@ -15,10 +15,10 @@ extern "C" {
 typedef struct lsio_transport_s lsio_transport_t;
 
 typedef enum lsio_socket_state_e {
-	LSIO_SOCKET_STATE_DISCONNECTED,
-	LSIO_SOCKET_STATE_DISCONNECTING,
-	LSIO_SOCKET_STATE_CONNECTED,
-	LSIO_SOCKET_STATE_CONNECTING
+	LSIO_SOCKET_STATE_DISCONNECTED = 1,
+	LSIO_SOCKET_STATE_DISCONNECTING = 2,
+	LSIO_SOCKET_STATE_CONNECTED = 4,
+	LSIO_SOCKET_STATE_CONNECTING = 8
 } lsio_socket_state_t;
 
 typedef struct lsio_socket_s {

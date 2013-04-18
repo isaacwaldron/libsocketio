@@ -4,7 +4,11 @@
 CC=gcc
 
 OBJDIR=obj
-OBJS=lsio_logging.o lsio_socket.o lsio_transport.o lsio_uri.o
+OBJS=lsio_logging.o \
+	 lsio_message.o \
+	 lsio_socket.o \
+	 lsio_transport.o \
+	 lsio_uri.o
 
 LIBDIR=lib
 LIBVER_MAJOR=1

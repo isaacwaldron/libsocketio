@@ -3,8 +3,8 @@
  * Copyright (c) 2013 Isaac Waldron
  */
 
-#ifndef __lsio_socket_h__
-#define __lsio_socket_h__
+#ifndef LSIO_SOCKET_H_INCLUDED
+#define LSIO_SOCKET_H_INCLUDED
 
 #ifdef __cplusplus
 extern "C" {

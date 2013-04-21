@@ -3,8 +3,8 @@
  * Copyright (c) 2013 Isaac Waldron
  */
 
-#ifndef __libsocketio_h__
-#define __libsocketio_h__
+#ifndef LIBSOCKETIO_H_INCLUDED
+#define LIBSOCKETIO_H_INCLUDED
 
 #ifdef __cplusplus
 extern "C" {

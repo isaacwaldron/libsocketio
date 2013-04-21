@@ -3,8 +3,8 @@
  * Copyright (c) 2013 Isaac Waldron
  */
 
-#ifndef __lsio_logging_h__
-#define __lsio_logging_h__
+#ifndef LSIO_LOGGING_H_INCLUDED
+#define LSIO_LOGGING_H_INCLUDED
 
 #ifdef __cplusplus
 extern "C" {

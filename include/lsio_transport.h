@@ -12,7 +12,7 @@ extern "C" {
 
 #include "lsio_socket.h"
 
-typedef struct lsio_socket_s lsio_socket_t;
+//typedef struct lsio_socket_s lsio_socket_t;
 
 typedef enum lsio_transport_type_e {
 	LSIO_TRANSPORT_TYPE_NONE = 0,
@@ -34,7 +34,7 @@ typedef enum lsio_transport_state_e {
 typedef struct lsio_transport_s {
 	lsio_transport_type_t type;
 	lsio_transport_state_t state;
-	lsio_socket_t *socket;
+	struct lsio_socket_s *socket;
 } lsio_transport_t;
 
 void lsio_transport_init(lsio_transport_t *);

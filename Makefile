@@ -2,6 +2,8 @@
 # Copyright (c) 2013 Isaac Waldron
 
 CC=gcc
+CFLAGS=-I /usr/local/include
+LDFLAGS=-L /usr/local/lib
 
 OBJDIR=obj
 OBJS=lsio_logging.o \
@@ -32,18 +34,18 @@ $(LIBDIR)/$(LIBNAME): $(LIBDIR)/$(LIBNAME_FULL)
 	-ln -s $(LIBNAME_FULL) $@
 
 $(LIBDIR)/$(LIBNAME_FULL): $(addprefix $(OBJDIR)/, $(OBJS))
-	$(CC) -shared -o $@ $^ -luriparser
+	$(CC) -shared -o $@ $^ $(LDFLAGS) -luriparser
 	
 dirs:
 	-mkdir $(DIRS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(INCLUDEDIR)/*.h dirs
-	$(CC) -c -o $@ $< -I $(INCLUDEDIR) -fPIC
+	$(CC) $(CFLAGS) -c -o $@ $< -I $(INCLUDEDIR) -fPIC
 
 test: $(addprefix $(BINDIR)/, $(TESTS))
 
 $(BINDIR)/%: $(TESTDIR)/%.c $(INCLUDEDIR)/*.h dirs
-	$(CC) -o $@ $< -I $(INCLUDEDIR) -L $(LIBDIR) -lsocketio
+	$(CC) -o $@ $< -I $(INCLUDEDIR) $(LDFLAGS) -L $(LIBDIR) -lsocketio
 
 clean:
 	-rm $(BINDIR)/*

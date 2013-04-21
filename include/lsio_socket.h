@@ -12,7 +12,7 @@ extern "C" {
 
 #include "lsio_transport.h"
 
-typedef struct lsio_transport_s lsio_transport_t;
+//typedef struct lsio_transport_s lsio_transport_t;
 
 typedef enum lsio_socket_state_e {
 	LSIO_SOCKET_STATE_DISCONNECTED = 1,
@@ -26,7 +26,7 @@ typedef struct lsio_socket_s {
 	char *session_id;
 	int heartbeat_timeout;
 	int close_timeout;
-	lsio_transport_t *transport;
+	struct lsio_transport_s *transport;
 } lsio_socket_t;
 
 void lsio_socket_init(lsio_socket_t *);

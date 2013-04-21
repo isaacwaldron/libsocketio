@@ -26,6 +26,8 @@ int main(int argc, char **argv)
 		fprintf(stderr, "failed to allocate memory for message\n");
 		return -1;
 	}
+
+	lsio_message_init(message);
 	
 	if (0 != lsio_message_parse(message, argv[1])) {
 		fprintf(stderr, "lsio_message_parse returned error\n");

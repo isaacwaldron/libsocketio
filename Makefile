@@ -22,7 +22,7 @@ SRCDIR=src
 INCLUDEDIR=include
 TESTDIR=test
 
-TESTS=lsio_uri_parse_test
+TESTS=lsio_uri_parse_test lsio_message_parse_test
 
 DIRS=$(BINDIR) $(LIBDIR) $(OBJDIR)
 

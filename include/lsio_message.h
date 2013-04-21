@@ -31,6 +31,7 @@ typedef struct lsio_message_s {
 } lsio_message_t;
 
 void lsio_message_init(lsio_message_t *);
+int lsio_message_parse(lsio_message_t *, char *);
 void lsio_message_free(lsio_message_t *);
 
 #ifdef __cplusplus

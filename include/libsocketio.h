@@ -11,6 +11,7 @@ extern "C" {
 #endif
 
 #include "lsio_logging.h"
+#include "lsio_message.h"
 #include "lsio_socket.h"
 #include "lsio_transport.h"
 #include "lsio_uri.h"

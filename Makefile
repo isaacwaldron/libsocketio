@@ -7,7 +7,7 @@ LDFLAGS=-L /usr/local/lib
 
 OBJDIR=obj
 OBJS=lsio_logging.o \
-	 lsio_message.o \
+	 lsio_packet.o \
 	 lsio_socket.o \
 	 lsio_transport.o \
 	 lsio_uri.o
@@ -24,7 +24,7 @@ SRCDIR=src
 INCLUDEDIR=include
 TESTDIR=test
 
-TESTS=lsio_uri_parse_test lsio_message_parse_test
+TESTS=lsio_uri_parse_test lsio_packet_parse_test
 
 DIRS=$(BINDIR) $(LIBDIR) $(OBJDIR)
 

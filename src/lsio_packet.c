@@ -9,7 +9,7 @@
 #include <string.h>
 
 #include "lsio_logging.h"
-#include "lsio_message.h"
+#include "lsio_packet.h"
 
 int lsio_message_type_is_valid(int);
 

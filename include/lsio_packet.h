@@ -26,6 +26,7 @@ typedef enum lsio_packet_type_e {
 typedef struct lsio_packet_s {
 	lsio_packet_type_t type;
 	unsigned int id;
+	unsigned int user_ack;
 	char *endpoint;
 	char *data;
 } lsio_packet_t;

@@ -10,6 +10,9 @@
 extern "C" {
 #endif
 
+#define LSIO_DEBUG(format, ...) lsio_debug("%s: " format, __func__, ## \
+	__VA_ARGS__)
+
 #include <stdarg.h>
 
 void lsio_logging_init(void (*lsio_debug_ptr)(const char *, va_list));

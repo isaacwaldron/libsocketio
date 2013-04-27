@@ -10,6 +10,7 @@
 extern "C" {
 #endif
 
+#include "lsio_common.h"
 #include "lsio_logging.h"
 #include "lsio_packet.h"
 #include "lsio_socket.h"

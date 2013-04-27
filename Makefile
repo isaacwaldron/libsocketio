@@ -2,7 +2,7 @@
 # Copyright (c) 2013 Isaac Waldron
 
 CC=gcc
-CFLAGS=-I /usr/local/include
+CFLAGS=-g -Wall -I /usr/local/include
 LDFLAGS=-L /usr/local/lib
 
 OBJDIR=obj

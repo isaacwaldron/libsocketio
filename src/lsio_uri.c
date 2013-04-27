@@ -21,24 +21,24 @@ lsio_uri_t *lsio_uri_parse(const char *uri_string)
 	char *scratch;
 	unsigned long int port, protocol_version;
 	
-	lsio_debug("lsio_uri_parse: entering");
+	LSIO_DEBUG("entering");
 	
 	state.uri = &uri;
 	if (URI_SUCCESS != uriParseUriA(&state, uri_string)) {
-		lsio_debug("lsio_uri_parse: uriParseUriA returned failure");
+		LSIO_DEBUG("uriParseUriA returned failure");
 		uriFreeUriMembersA(&uri);
 		return NULL;
 	}
 	
 	if (NULL == (result = (lsio_uri_t *) malloc(sizeof(lsio_uri_t)))) {
-		lsio_debug("lsio_uri_parse: out of memory");
+		LSIO_DEBUG("out of memory");
 		uriFreeUriMembersA(&uri);
 		return NULL;
 	}
 	
 	result->scheme = lsio_extract_text_range(&uri.scheme);
 	if (NULL == result->scheme) {
-		lsio_debug("lsio_uri_parse: scheme extraction failed");
+		LSIO_DEBUG("scheme extraction failed");
 		uriFreeUriMembersA(&uri);
 		lsio_uri_free(result);
 		return NULL;
@@ -46,7 +46,7 @@ lsio_uri_t *lsio_uri_parse(const char *uri_string)
 	
 	result->host = lsio_extract_text_range(&uri.hostText);
 	if (NULL == result->host) {
-		lsio_debug("lsio_uri_parse: host extraction failed");
+		LSIO_DEBUG("host extraction failed");
 		uriFreeUriMembersA(&uri);
 		lsio_uri_free(result);
 		return NULL;
@@ -57,7 +57,7 @@ lsio_uri_t *lsio_uri_parse(const char *uri_string)
 	port = strtoul(scratch, (char **) NULL, 10);
 	free(scratch);
 	if (0 != errno || UINT_MAX < port) {
-		lsio_debug("lsio_uri_parse: port extraction failed");
+		LSIO_DEBUG("port extraction failed");
 		uriFreeUriMembersA(&uri);
 		lsio_uri_free(result);
 		return NULL;
@@ -66,14 +66,14 @@ lsio_uri_t *lsio_uri_parse(const char *uri_string)
 	
 	segment = uri.pathHead;
 	if (NULL == segment) {
-		lsio_debug("lsio_uri_parse: missing namespace path segment");
+		LSIO_DEBUG("missing namespace path segment");
 		uriFreeUriMembersA(&uri);
 		lsio_uri_free(result);
 		return NULL;
 	}
 	result->namespace = lsio_extract_text_range(&segment->text);
 	if (NULL == result->namespace) {
-		lsio_debug("lsio_uri_parse: namespace extraction failed");
+		LSIO_DEBUG("namespace extraction failed");
 		uriFreeUriMembersA(&uri);
 		lsio_uri_free(result);
 		return NULL;
@@ -81,7 +81,7 @@ lsio_uri_t *lsio_uri_parse(const char *uri_string)
 	
 	segment = segment->next;
 	if (NULL == segment) {
-		lsio_debug("lsio_uri_parse: missing version path segment");
+		LSIO_DEBUG("missing version path segment");
 		uriFreeUriMembersA(&uri);
 		lsio_uri_free(result);
 		return NULL;
@@ -91,7 +91,7 @@ lsio_uri_t *lsio_uri_parse(const char *uri_string)
 	protocol_version = strtoul(scratch, (char **) NULL, 10);
 	free(scratch);
 	if (0 != errno || UINT_MAX < protocol_version) {
-		lsio_debug("lsio_uri_parse: version extraction failed");
+		LSIO_DEBUG("version extraction failed");
 		uriFreeUriMembersA(&uri);
 		lsio_uri_free(result);
 		return NULL;
@@ -100,8 +100,7 @@ lsio_uri_t *lsio_uri_parse(const char *uri_string)
 	
 	if (NULL != segment->next && 
 		segment->next->text.afterLast != segment->next->text.first) {
-		lsio_debug("lsio_uri_parse: unexpected path segment after "
-				   "version");
+		LSIO_DEBUG("unexpected path segment after version");
 		uriFreeUriMembersA(&uri);
 		lsio_uri_free(result);
 		return NULL;
@@ -113,7 +112,7 @@ lsio_uri_t *lsio_uri_parse(const char *uri_string)
 	
 	uriFreeUriMembersA(&uri);
 	
-	lsio_debug("lsio_uri_parse: success");
+	LSIO_DEBUG("success");
 	return result;
 }
 
@@ -148,8 +147,7 @@ char *lsio_extract_text_range(UriTextRangeA *range)
 {
 	char *result;
 	
-	lsio_debug("lsio_extract_text_range: %lu %lu", 
-		(unsigned long) range->first, 
+	LSIO_DEBUG("%lu %lu", (unsigned long) range->first, 
 		(unsigned long) range->afterLast);
 	
 	if (!range->first || !range->afterLast)

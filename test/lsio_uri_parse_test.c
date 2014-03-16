@@ -50,7 +50,7 @@ int main(int arcg, char **argv) {
 	
 	fprintf(stderr, "scheme: %s host: %s port: %d namespace: %s "
 		"version: %d\n",
-		uri->scheme, uri->host, uri->port, uri->namespace, 
+		uri->scheme, uri->host, uri->port, uri->ns,
 		uri->protocol_version);
 
 	lsio_uri_free(uri);

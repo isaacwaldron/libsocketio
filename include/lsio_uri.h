@@ -40,7 +40,7 @@ typedef struct lsio_uri_s {
 	char *scheme;
 	char *host;
 	int port;
-	char *namespace;
+	char *ns;
 	int protocol_version;
 	char *transport;
 	char *session_id;

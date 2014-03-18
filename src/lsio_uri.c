@@ -97,8 +97,8 @@ lsio_uri_t *lsio_uri_parse(const char *uri_string)
 		lsio_uri_free(result);
 		return NULL;
 	}
-	result->namespace = lsio_extract_text_range(&segment->text);
-	if (NULL == result->namespace) {
+	result->ns = lsio_extract_text_range(&segment->text);
+	if (NULL == result->ns) {
 		LSIO_DEBUG("namespace extraction failed");
 		uriFreeUriMembersA(&uri);
 		lsio_uri_free(result);
@@ -153,8 +153,8 @@ void lsio_uri_free(lsio_uri_t *uri)
 	if (uri->host)
 		free(uri->host);
 		
-	if (uri->namespace)
-		free(uri->namespace);
+	if (uri->ns)
+		free(uri->ns);
 	
 	if (uri->transport)
 		free(uri->transport);
